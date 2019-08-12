@@ -1,0 +1,23 @@
+---
+
+default: --profile pretty -p qualidade -p chrome -p html
+
+
+pretty: --format pretty
+ci: --format progress
+qualidade: AMBIENTE=qualidade
+homolog: AMBIENTE=homolog
+dev: AMBIENTE=dev
+producao: AMBIENTE=producao
+chrome: BROWSER=chrome
+chrome_headless: BROWSER=chrome_headless
+firefox: BROWSER=firefox
+safari: BROWSER=safari
+ie: BROWSER=ie
+poltergeist: BROWSER=poltergeist
+html: --format html --out=reports/relatorio.html
+json: --format json 
+
+
+headless:  HEADLESS=headless
+no_headless:  HEADLESS=no_headless
