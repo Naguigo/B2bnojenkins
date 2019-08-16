@@ -1,6 +1,7 @@
 pipeline{
-    agent any
-
+    agent { dockergile true
+        
+    }
     stages {
         stage("Build") {
             steps {

@@ -11,7 +11,7 @@ require_relative 'helper.rb'
 
 
 
-BROWSER = ENV['BROWSER']
+#BROWSER = ENV['BROWSER']
 AMBIENTE = ENV['AMBIENTE']
 
 CONFIG = YAML.load_file(File.dirname(__FILE__) + "/ambientes/#{AMBIENTE}.yml")
@@ -23,34 +23,34 @@ World(Helper)
 
 
 
-Capybara.register_driver :selenium do |app|
+# Capybara.register_driver :selenium do |app|
 
-   if BROWSER.eql?('chrome')
-       Capybara::Selenium::Driver.new(app, :browser => :chrome)
-   elsif BROWSER.eql?('chrome_headless')
-    Capybara::Selenium::Driver.new(app, :browser => :chrome)
-   # desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
-    # 'chromeOptions' => {'args' =>['--headless', 'desable-gpu']}
+#    if BROWSER.eql?('chrome')
+#        Capybara::Selenium::Driver.new(app, :browser => :chrome)
+#    elsif BROWSER.eql?('chrome_headless')
+#     Capybara::Selenium::Driver.new(app, :browser => :chrome)
+#    # desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
+#     # 'chromeOptions' => {'args' =>['--headless', 'desable-gpu']}
     
-    #) 
-    #)
+#     #) 
+#     #)
     
     
 
-   elsif BROWSER.eql?('firefox')
-       Capybara::Selenium::Driver.new(app, :browser => :firefox, :marionette =>true)
-   elsif BROWSER.eql?('safari')
-       Capybara::Selenium::Driver.new(app, :browser => :safari)
-   elsif BROWSER.eql?('ie')
-       Capybara::Selenium::Driver.new(app, :browser => :internet_explorer)
-   elsif BROWSER.eql?('poltergeister')
-       Capybara::Selenium::Driver.new(app, :browser => :poltergeister)
-   end
+#    elsif BROWSER.eql?('firefox')
+#        Capybara::Selenium::Driver.new(app, :browser => :firefox, :marionette =>true)
+#    elsif BROWSER.eql?('safari')
+#        Capybara::Selenium::Driver.new(app, :browser => :safari)
+#    elsif BROWSER.eql?('ie')
+#        Capybara::Selenium::Driver.new(app, :browser => :internet_explorer)
+#    elsif BROWSER.eql?('poltergeister')
+#        Capybara::Selenium::Driver.new(app, :browser => :poltergeister)
+#    end
 
-end
+# end
 
 ######################### comandos para Chrome_Headless###################################
-Capybara.register_driver :selenium do |app|
+Capybara.register_driver :selenium_chrome_headless do |app|
     Capybara::Selenium::Driver.load_selenium
     browser_options = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
       opts.args << '--headless'
@@ -66,7 +66,7 @@ end
 
 
 Capybara.configure do |config|
-   config.default_driver = :selenium          #selenium_chrome / selenium_chrome_headless (modo invisivel)
+   config.default_driver = :selenium_chrome_headless          #selenium_chrome / selenium_chrome_headless (modo invisivel)
    config.app_host = CONFIG['url_padrao'] 
    CONFIG['user']
    CONFIG['senha']
