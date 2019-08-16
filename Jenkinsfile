@@ -1,5 +1,5 @@
 pipeline{
-    agent { dockergile true
+    agent { dockerfile true
         
     }
     stages {
